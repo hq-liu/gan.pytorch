@@ -46,7 +46,7 @@ class GAN_Vanilla(object):
                     real_output = self.D(data)
                     d_loss_1 = self.criterion(real_output, self.label_real)
 
-                    z = get_normal_sampler(0, 0.1, self.device)(self.batch_size, self.z_dim)
+                    z = get_uniform_sampler(self.device)(self.batch_size, self.z_dim)
                     fake_image = self.G(z).detach()
 
                     fake_output = self.D(fake_image)
